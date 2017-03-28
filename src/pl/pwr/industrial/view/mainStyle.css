@@ -1,0 +1,67 @@
+#button-1 {
+	    -fx-background-color:
+        linear-gradient(#708090 10%, #778696 20%, #7E8D9B 30%, #8593A1 40%, #8D99A6 50%,
+        #94A0AC 60%, #9BA6B1 70%, #A2ACB7 80%, #A9B3BC 90%, #B0B9C2 100%),
+        linear-gradient(#8593A1, #EAECEE);
+    -fx-background-insets: 0,1;
+    -fx-background-radius: 2,1;
+    -fx-padding: 3 30 3 30;
+
+    -fx-text-fill: black;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+	-fx-border-color: black;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+
+}
+
+#button-1:hover {
+	-fx-background-color:
+    linear-gradient(#708090 10%, #778696 20%, #7E8D9B 30%, #8593A1 40%, #8D99A6 50%,
+    #94A0AC 60%, #9BA6B1 70%, #A2ACB7 80%, #A9B3BC 90%, #B0B9C2 100%),
+    linear-gradient(#666699, #BABAD1);
+	-fx-text-fill: #ffffff;
+	-fx-font-weight: bold;
+	-fx-cursor: hand;
+}
+
+
+#menu-bar {
+	-fx-background-color:
+        linear-gradient(#708090 10%, #778696 20%, #7E8D9B 30%, #8593A1 40%, #8D99A6 50%,
+        #94A0AC 60%, #9BA6B1 70%, #A2ACB7 80%, #A9B3BC 90%, #B0B9C2 100%),
+        linear-gradient(#8593A1, #EAECEE);
+    -fx-background-insets: 0,1;
+    -fx-background-radius: 2,1;
+	-fx-border-color: black;
+}
+
+.toggle-button {
+	-fx-background-color:
+	#c0c0c0,
+	linear-gradient(#d6d6d6 50%, white 100%),
+        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,0,1;
+	-fx-font-weight: bold;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.toggle-button:selected {
+	-fx-background-color:
+	linear-gradient(#33CC33, #3DFF99);
+}
+#image {
+	-fx-border-color: black;
+}
+
+#grid-1, #grid-2 {
+	-fx-background-color: linear-gradient(#EDEDFF, #F7F7FF);
+}
+
+#grid-2 {
+	-fx-border-color: black;
+	-fx-border-width: 0px 1px 0px 0px;
+}
+
