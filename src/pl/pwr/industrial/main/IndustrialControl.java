@@ -35,7 +35,7 @@ public class IndustrialControl extends Application {
 				loader.load();
 				MainController mainController = loader.getController();
 				ConnectionData connectionData = mainController.getConnectionData();
-				windowUtil.loadWindowAndSendDataTest(Strings.exitLayoutName, Strings.exitItemName, connectionData);
+				windowUtil.loadWindowAndSendData(Strings.exitLayoutName, Strings.exitItemName, connectionData);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -13,7 +13,7 @@ import pl.pwr.industrial.data.Strings;
 import pl.pwr.industrial.utils.RegexUtil;
 import pl.pwr.industrial.utils.WindowUtil;
 
-public class ConnectionController implements Initializable {
+public class ConnectionController implements Initializable, ConnectionDataProvider {
 
 	private ConnectionData connectionData;
 	private RegexUtil regexUtil;

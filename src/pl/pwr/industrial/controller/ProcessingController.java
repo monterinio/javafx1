@@ -24,8 +24,8 @@ public class ProcessingController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		connectionUtil = new ConnectionUtil();
 		exitButton.setOnAction(x-> {
-			connectionUtil.closeConnection();
 			((Stage) exitButton.getScene().getWindow()).close();
+			connectionUtil.closeConnection();
 		});
 	}
 

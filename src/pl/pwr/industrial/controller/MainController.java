@@ -62,7 +62,7 @@ public class MainController implements Initializable {
 		connectionData = saveLoadUtil.loadApplicationState();
 		connectionSettingsItem.setOnAction(x->windowUtil.loadWindowAndSendData(Strings.connectionLayoutName, Strings.connectionSettingsItemName, connectionData));
 		aboutItem.setOnAction(x->windowUtil.loadWindow(Strings.aboutLayoutName,Strings.aboutItemName));
-		closeItem.setOnAction(x->windowUtil.loadWindowAndSendDataTest(Strings.exitLayoutName, Strings.exitItemName, connectionData));
+		closeItem.setOnAction(x->windowUtil.loadWindowAndSendData(Strings.exitLayoutName, Strings.exitItemName, connectionData));
 	}
 
 	private void executeButton() {

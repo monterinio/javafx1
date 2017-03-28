@@ -7,8 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import pl.pwr.industrial.controller.ConnectionController;
-import pl.pwr.industrial.controller.ExitController;
+import pl.pwr.industrial.controller.ConnectionDataProvider;
 import pl.pwr.industrial.controller.ProcessingController;
 import pl.pwr.industrial.data.ConnectionData;
 import pl.pwr.industrial.data.Data;
@@ -37,8 +36,8 @@ public class WindowUtil {
 			subWindow.initModality(Modality.APPLICATION_MODAL);
 			FXMLLoader loader = new FXMLLoader();
 			Parent parent = loader.load(getClass().getResource(path).openStream());
-			ConnectionController connectionController = (ConnectionController) loader.getController();
-			connectionController.getConnectionData(connectionData);
+			ConnectionDataProvider controller = loader.getController();
+			controller.getConnectionData(connectionData);
 
 			Scene scene = new Scene(parent);
 
@@ -67,24 +66,4 @@ public class WindowUtil {
 			e.printStackTrace();
 		}
 	}
-
-	public void loadWindowAndSendDataTest(String path, String appName, ConnectionData connectionData) {
-		try {
-			Stage subWindow = new Stage();
-			subWindow.initModality(Modality.APPLICATION_MODAL);
-			FXMLLoader loader = new FXMLLoader();
-			Parent parent = loader.load(getClass().getResource(path).openStream());
-			ExitController exitController = (ExitController) loader.getController();
-			exitController.getConnectionData(connectionData);
-
-			Scene scene = new Scene(parent);
-
-			subWindow.setScene(scene);
-			subWindow.setTitle(appName);
-			subWindow.show();
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 }

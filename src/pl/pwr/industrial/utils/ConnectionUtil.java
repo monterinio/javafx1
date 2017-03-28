@@ -13,7 +13,6 @@ public class ConnectionUtil {
 	private Socket socket;
 	private OutputStream outputStream;
 	private ObjectOutputStream objectOutputStream;
-	private WindowUtil windowUtil;
 
 	public void run(ConnectionData connectionData, Data data) {
 		try {
@@ -23,8 +22,6 @@ public class ConnectionUtil {
 			objectOutputStream.writeObject(data);
 			closeConnection();
 		} catch(Exception e) {
-			windowUtil = new WindowUtil();
-			windowUtil.loadWindow(Strings.exitLayoutName, Strings.exitItemName);
 			e.printStackTrace();
 		}
 	}

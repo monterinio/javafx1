@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import pl.pwr.industrial.data.ConnectionData;
 import pl.pwr.industrial.utils.SaveLoadUtil;
 
-public class ExitController implements Initializable {
+public class ExitController implements Initializable, ConnectionDataProvider {
 
 	private SaveLoadUtil saveLoadUtil;
 	private ConnectionData connectionData;
