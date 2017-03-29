@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import pl.pwr.industrial.data.ConnectionData;
 import pl.pwr.industrial.data.Strings;
 import pl.pwr.industrial.utils.RegexUtil;
+import pl.pwr.industrial.utils.SaveLoadUtil;
 import pl.pwr.industrial.utils.WindowUtil;
 
 public class ConnectionController implements Initializable, ConnectionDataProvider {
@@ -18,6 +19,7 @@ public class ConnectionController implements Initializable, ConnectionDataProvid
 	private ConnectionData connectionData;
 	private RegexUtil regexUtil;
 	private WindowUtil windowUtil;
+	private SaveLoadUtil saveLoadUtil;
 
     @FXML
     private Button cancel;
@@ -31,6 +33,10 @@ public class ConnectionController implements Initializable, ConnectionDataProvid
     @FXML
     private TextField coComputerIP;
 
+    public ConnectionController() {
+    	saveLoadUtil = new SaveLoadUtil();
+    }
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		saveAndExit.setOnAction(x-> {
@@ -38,6 +44,7 @@ public class ConnectionController implements Initializable, ConnectionDataProvid
 			if(regexUtil.checkIP(serverIP.getText())) {
 				connectionData.setServerIP(serverIP.getText());
 				connectionData.setCoComputerIP(coComputerIP.getText());
+				saveLoadUtil.saveApplicationState(getConnectionData());
 				((Stage) saveAndExit.getScene().getWindow()).close();
 			} else {
 				windowUtil = new WindowUtil();

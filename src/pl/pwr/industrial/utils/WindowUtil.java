@@ -18,10 +18,8 @@ public class WindowUtil {
 		try {
 			Stage subWindow = new Stage();
 			subWindow.initModality(Modality.APPLICATION_MODAL);
-
 			Parent parent = (Parent) FXMLLoader.load(getClass().getResource(path));
 			Scene scene = new Scene(parent);
-
 			subWindow.setScene(scene);
 			subWindow.setTitle(appName);
 			subWindow.show();
@@ -38,9 +36,7 @@ public class WindowUtil {
 			Parent parent = loader.load(getClass().getResource(path).openStream());
 			ConnectionDataProvider controller = loader.getController();
 			controller.getConnectionData(connectionData);
-
 			Scene scene = new Scene(parent);
-
 			subWindow.setScene(scene);
 			subWindow.setTitle(appName);
 			subWindow.show();

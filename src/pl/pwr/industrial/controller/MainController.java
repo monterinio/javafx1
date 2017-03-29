@@ -48,6 +48,12 @@ public class MainController implements Initializable {
 	@FXML
 	private MenuItem aboutItem;
 
+	public MainController() {
+		data = new Data();
+		saveLoadUtil = new SaveLoadUtil();
+		windowUtil = new WindowUtil();
+		connectionData = saveLoadUtil.loadApplicationState();
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -56,13 +62,9 @@ public class MainController implements Initializable {
 	}
 
 	private void configureMenuItems() {
-		data = new Data();
-		saveLoadUtil = new SaveLoadUtil();
-		windowUtil = new WindowUtil();
-		connectionData = saveLoadUtil.loadApplicationState();
 		connectionSettingsItem.setOnAction(x->windowUtil.loadWindowAndSendData(Strings.connectionLayoutName, Strings.connectionSettingsItemName, connectionData));
 		aboutItem.setOnAction(x->windowUtil.loadWindow(Strings.aboutLayoutName,Strings.aboutItemName));
-		closeItem.setOnAction(x->windowUtil.loadWindowAndSendData(Strings.exitLayoutName, Strings.exitItemName, connectionData));
+		closeItem.setOnAction(x->windowUtil.loadWindow(Strings.exitLayoutName, Strings.exitItemName));
 	}
 
 	private void executeButton() {
@@ -75,4 +77,5 @@ public class MainController implements Initializable {
 	public ConnectionData getConnectionData() {
 		return connectionData;
 	}
+
 }
