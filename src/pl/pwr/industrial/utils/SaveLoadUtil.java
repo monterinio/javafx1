@@ -31,15 +31,14 @@ public class SaveLoadUtil {
 	        connectionData = (ConnectionData) ois.readObject();
 
 	        } catch (FileNotFoundException e) {
+				connectionData = new ConnectionData();
 	            e.printStackTrace();
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        } catch (ClassNotFoundException e) {
 	            e.printStackTrace();
 	        }
-		 if(connectionData == null) {
-			 connectionData = new ConnectionData();
-		 }
+
 		 return connectionData;
 	}
 }

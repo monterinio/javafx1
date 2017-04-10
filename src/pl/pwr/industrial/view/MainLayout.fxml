@@ -134,7 +134,7 @@
                   <Rectangle2D />
                </viewport>
                <image>
-                  <Image url="@../../../../../../../Desktop/ass.jpg" />
+                  <Image url="@../res/background.jpg" />
                </image>
             </ImageView>
          </children>
