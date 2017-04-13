@@ -11,18 +11,17 @@ import javafx.stage.Stage;
 
 public class ExitController implements Initializable {
 
-	@FXML
+    @FXML
     private Button yesButton;
 
     @FXML
     private Button noButton;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		yesButton.setOnAction(x->{
-			Platform.exit();
-		});
-		noButton.setOnAction(x-> ((Stage) noButton.getScene().getWindow()).close()); //najpierw pobiera sie stage z kontekstu noButton a potem zamyka to okno
-	}
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        yesButton.setOnAction(x -> {
+            Platform.exit();
+        });
+        noButton.setOnAction(x -> ((Stage) noButton.getScene().getWindow()).close());
+    }
 }

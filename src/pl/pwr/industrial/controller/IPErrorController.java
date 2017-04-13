@@ -13,10 +13,8 @@ public class IPErrorController implements Initializable {
     @FXML
     private Button okButton;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		okButton.setOnAction(x-> ((Stage) okButton.getScene().getWindow()).close());
-
-	}
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        okButton.setOnAction(x -> ((Stage) okButton.getScene().getWindow()).close());
+    }
 }

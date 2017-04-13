@@ -16,10 +16,7 @@ import pl.pwr.industrial.utils.WindowUtil;
 
 public class ConnectionController implements Initializable, ConnectionDataProvider {
 
-	private ConnectionData connectionData;
-	private RegexUtil regexUtil;
-	private WindowUtil windowUtil;
-	private SaveLoadUtil saveLoadUtil;
+    private ConnectionData connectionData;
 
     @FXML
     private Button cancel;
@@ -33,39 +30,33 @@ public class ConnectionController implements Initializable, ConnectionDataProvid
     @FXML
     private TextField coComputerIP;
 
-    public ConnectionController() {
-    	saveLoadUtil = new SaveLoadUtil();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        saveAndExit.setOnAction(x -> {
+            if (RegexUtil.checkIP(serverIP.getText())) {
+                connectionData.setServerIP(serverIP.getText());
+                connectionData.setCoComputerIP(coComputerIP.getText());
+                SaveLoadUtil.saveApplicationState(getConnectionData());
+                ((Stage) saveAndExit.getScene().getWindow()).close();
+            } else {
+                WindowUtil.loadWindow(Strings.IP_ERROR_LAYOUT_NAME, Strings.IP_ERROR_ITEM_NAME);
+            }
+        });
+        cancel.setOnAction(x -> ((Stage) cancel.getScene().getWindow()).close());
     }
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		saveAndExit.setOnAction(x-> {
-			regexUtil = new RegexUtil();
-			if(regexUtil.checkIP(serverIP.getText())) {
-				connectionData.setServerIP(serverIP.getText());
-				connectionData.setCoComputerIP(coComputerIP.getText());
-				saveLoadUtil.saveApplicationState(getConnectionData());
-				((Stage) saveAndExit.getScene().getWindow()).close();
-			} else {
-				windowUtil = new WindowUtil();
-				windowUtil.loadWindow(Strings.IPErrorLayoutName, Strings.IPErrorItemName);
-			}
-		});
-		cancel.setOnAction(x-> ((Stage) cancel.getScene().getWindow()).close());
-	}
+    public void getConnectionData(ConnectionData connectionData) {
+        setConnectionData(connectionData);
+        serverIP.setText(connectionData.getServerIP());
+        coComputerIP.setText(connectionData.getCoComputerIP());
+    }
 
-	public void getConnectionData(ConnectionData connectionData) {
-		setConnectionData(connectionData);
-		serverIP.setText(connectionData.getServerIP());
-		coComputerIP.setText(connectionData.getCoComputerIP());
-	}
+    public ConnectionData getConnectionData() {
+        return connectionData;
+    }
 
-	public ConnectionData getConnectionData() {
-		return connectionData;
-	}
-
-	public void setConnectionData(ConnectionData connectionData) {
-		this.connectionData = connectionData;
-	}
+    public void setConnectionData(ConnectionData connectionData) {
+        this.connectionData = connectionData;
+    }
 
 }

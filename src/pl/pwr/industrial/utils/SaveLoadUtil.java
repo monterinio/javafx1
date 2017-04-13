@@ -10,35 +10,36 @@ import java.io.ObjectOutputStream;
 import pl.pwr.industrial.data.ConnectionData;
 import pl.pwr.industrial.data.Strings;
 
-public class SaveLoadUtil {
-	public void saveApplicationState(ConnectionData connectionData) {
-		try (
-				FileOutputStream fs = new FileOutputStream(Strings.fileName);
-				ObjectOutputStream os = new ObjectOutputStream(fs);
-				) {
-			os.writeObject(connectionData);
-		} catch (FileNotFoundException e) {
+public final class SaveLoadUtil {
+
+    private SaveLoadUtil() {    }
+
+    public static void saveApplicationState(ConnectionData connectionData) {
+        try (FileOutputStream fs = new FileOutputStream(Strings.FILE_NAME);
+                ObjectOutputStream os = new ObjectOutputStream(fs);) {
+            os.writeObject(connectionData);
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-	}
-	public ConnectionData loadApplicationState() {
-		ConnectionData connectionData = null;
-		 try(	FileInputStream fis = new FileInputStream(Strings.fileName);
-	            ObjectInputStream ois = new ObjectInputStream(fis);
-				 ) {
-	        connectionData = (ConnectionData) ois.readObject();
+    }
 
-	        } catch (FileNotFoundException e) {
-				connectionData = new ConnectionData();
-	            e.printStackTrace();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        } catch (ClassNotFoundException e) {
-	            e.printStackTrace();
-	        }
+    public static ConnectionData loadApplicationState() {
+        ConnectionData connectionData = null;
+        try (FileInputStream fis = new FileInputStream(Strings.FILE_NAME);
+                ObjectInputStream ois = new ObjectInputStream(fis);) {
+            connectionData = (ConnectionData) ois.readObject();
 
-		 return connectionData;
-	}
+        } catch (FileNotFoundException e) {
+            connectionData = new ConnectionData();
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return connectionData;
+    }
 }

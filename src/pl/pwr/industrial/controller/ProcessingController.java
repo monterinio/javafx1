@@ -13,29 +13,25 @@ import pl.pwr.industrial.utils.ConnectionUtil;
 
 public class ProcessingController implements Initializable {
 
-	private ConnectionData connectionData;
-	private Data data;
-	private ConnectionUtil connectionUtil;
+    private ConnectionData connectionData;
+    private Data data;
 
     @FXML
     private Button exitButton;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		connectionUtil = new ConnectionUtil();
-		exitButton.setOnAction(x-> {
-			((Stage) exitButton.getScene().getWindow()).close();
-			connectionUtil.closeConnection();
-		});
-	}
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        exitButton.setOnAction(x -> {
+            ((Stage) exitButton.getScene().getWindow()).close();
+        });
+    }
 
-	public void getData(ConnectionData connectionData, Data data) {
-		this.connectionData = connectionData;
-		this.data = data;
-	}
+    public void getData(ConnectionData connectionData, Data data) {
+        this.connectionData = connectionData;
+        this.data = data;
+    }
 
-	public void startConnection() {
-		connectionUtil.run(connectionData, data);
-	}
-
+    public void startConnection() {
+        ConnectionUtil.run(connectionData, data);
+    }
 }

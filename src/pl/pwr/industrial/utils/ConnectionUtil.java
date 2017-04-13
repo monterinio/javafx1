@@ -10,29 +10,17 @@ import pl.pwr.industrial.data.Data;
 import pl.pwr.industrial.data.Strings;
 
 public class ConnectionUtil {
-	private Socket socket;
-	private OutputStream outputStream;
-	private ObjectOutputStream objectOutputStream;
+    private ConnectionUtil() {  }
+    public static void run(ConnectionData connectionData, Data data) {
+        try (
+            Socket socket = new Socket(connectionData.getServerIP(), Strings.PORT_NUMBER);
+            OutputStream outputStream = socket.getOutputStream();
+                ) {
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	public void run(ConnectionData connectionData, Data data) {
-		try {
-			socket = new Socket(connectionData.getServerIP(),Strings.portNumber);
-			outputStream = socket.getOutputStream();
-			objectOutputStream = new ObjectOutputStream(outputStream);
-			objectOutputStream.writeObject(data);
-			closeConnection();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void closeConnection() {
-		try {
-			objectOutputStream.close();
-			outputStream.close();
-			socket.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 }
